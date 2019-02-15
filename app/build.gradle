@@ -25,6 +25,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // link que resolveu o problema da dependência
+    // https://stackoverflow.com/questions/37991892/how-to-use-lombok-plugin-in-android-studio
     compileOnly 'org.projectlombok:lombok:1.16.22'
     annotationProcessor 'org.projectlombok:lombok:1.16.22'
 }
