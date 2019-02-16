@@ -28,6 +28,7 @@ dependencies {
 
     // link que resolveu o problema da dependência
     // https://stackoverflow.com/questions/37991892/how-to-use-lombok-plugin-in-android-studio
+    // https://projectlombok.org/setup/android site oficial com mais informações
     compileOnly 'org.projectlombok:lombok:1.16.22'
     annotationProcessor 'org.projectlombok:lombok:1.16.22'
 }
