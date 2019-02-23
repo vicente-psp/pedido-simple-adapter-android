@@ -15,7 +15,7 @@ class Produto {
     @Builder
     public Produto(long id, String nome, double valorUnitario) {
         this.id = id;
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
         this.valorUnitario = valorUnitario;
     }
 }

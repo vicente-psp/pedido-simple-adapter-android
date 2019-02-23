@@ -14,7 +14,7 @@ class Cliente {
     @Builder
     public Cliente(long id, String nome) {
         this.id = id;
-        this.nome = nome;
+        this.nome = nome.toUpperCase();
     }
 
 }

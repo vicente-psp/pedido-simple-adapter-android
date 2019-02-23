@@ -31,4 +31,6 @@ dependencies {
     // https://projectlombok.org/setup/android site oficial com mais informações
     compileOnly 'org.projectlombok:lombok:1.16.22'
     annotationProcessor 'org.projectlombok:lombok:1.16.22'
+//    compile "org.projectlombok:lombok:1.16.16"
+//    annotationProcessor "org.projectlombok:lombok:1.16.16"
 }
