@@ -1,3 +1,4 @@
 # pedido-simple-adapter-android
-Atividade de aula utilizando adapters e lombok.
+Atividade avaliativa utilizando SimpleAdapter.
+Utilizado também lombok (não solicitado na tarefa).
 - url da documentação do lombok: https://projectlombok.org/features/all
