@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".atividades.PedidoActivity" />
-        <activity android:name=".atividades.ClienteActivity"></activity>
+        <activity android:name=".atividades.ClienteActivity" />
+        <activity android:name=".atividades.ProdutoActivity"></activity>
     </application>
 
 </manifest>
