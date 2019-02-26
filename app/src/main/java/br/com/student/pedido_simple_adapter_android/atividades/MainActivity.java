@@ -11,7 +11,9 @@ import br.com.student.pedido_simple_adapter_android.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final int RETORNO = 1;
+    private final int CLIENTE = 1;
+    private final int PEDIDO = 2;
+    private final int PRODUTO = 3;   
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +27,27 @@ public class MainActivity extends AppCompatActivity {
 
     public void openViewCliente(View view) {
         Intent intent = new Intent(this, ClienteActivity.class);
-        startActivityForResult(intent, RETORNO);
+        startActivityForResult(intent, CLIENTE);
 //        startActivity(intent);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == RETORNO) {
-            if (resultCode == Activity.RESULT_OK) {
+        if (requestCode == CLIENTE) { // pegar objeto vindo da tela cliente
+            if (resultCode == Activity.RESULT_OK) {               
+                String message = data.getStringExtra("MESSAGE");
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Não deu certo", Toast.LENGTH_SHORT).show();
+            }
+        } else if (requestCode == PEDIDO) {  // pegar objeto vindo da tela pedido
+            if (resultCode == Activity.RESULT_OK) {               
+                String message = data.getStringExtra("MESSAGE");
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Não deu certo", Toast.LENGTH_SHORT).show();
+            }
+        } else if (requestCode == PRODUTO) {  // pegar objeto vindo da tela produto
+            if (resultCode == Activity.RESULT_OK) {               
                 String message = data.getStringExtra("MESSAGE");
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
             } else {
