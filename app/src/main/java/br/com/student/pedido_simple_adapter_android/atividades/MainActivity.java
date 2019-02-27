@@ -17,7 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
     private final int CLIENTE = 1;
     private final int PEDIDO = 2;
-    private final int PRODUTO = 3;   
+    private final int PRODUTO = 3;
+
+    private ArrayList<Cliente> clientes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,20 +32,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openViewCliente(View view) {
-        Cliente cliente = new Cliente(1, "Glauber");
-//        ArrayList<Cliente> clientes = new ArrayList<>();
-//        clientes.add(cliente);
         Intent intent = new Intent(this, ClienteActivity.class);
-//        intent.putParcelableArrayListExtra("clientes", clientes);
-        intent.putExtra("cliente", cliente);
-        startActivity(intent);
+        startActivityForResult(intent, CLIENTE);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CLIENTE) { // pegar objeto vindo da tela cliente
-            if (resultCode == Activity.RESULT_OK) {               
-                String message = data.getStringExtra("MESSAGE");
-                Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        if (requestCode == CLIENTE) {
+            if (resultCode == Activity.RESULT_OK) {
+                ArrayList<Cliente> clientes = data.getParcelableArrayListExtra("clientes");
+                preencheArrayClientes(clientes);
+
+                Toast.makeText(this, "tamanho da lista: " + this.clientes.size(), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Não deu certo", Toast.LENGTH_SHORT).show();
             }
@@ -61,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Não deu certo", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    private void preencheArrayClientes(ArrayList<Cliente> clientes) {
+        for (Cliente cliente: clientes){
+            this.clientes.add(cliente);
         }
     }
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.student.pedido_simple_adapter_android.entidades.Cliente;
@@ -16,7 +17,7 @@ import br.com.student.pedido_simple_adapter_android.R;
 
 public class ClienteActivity extends AppCompatActivity {
 
-    List<Cliente> clientes;
+    ArrayList<Cliente> clientes = new ArrayList<>();
     EditText txtCliente;
             
     @Override
@@ -37,8 +38,10 @@ public class ClienteActivity extends AppCompatActivity {
 
         txtCliente = findViewById(R.id.txtCliente);
         Cliente cliente = new Cliente(txtCliente.getText().toString());
-        Intent intent = new Intent();
-        intent.putExtra("cliente", cliente); //parei aqui
+        clientes.add(cliente);
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putParcelableArrayListExtra("clientes", clientes);
+//        intent.putExtra("cliente", cliente); //parei aqui
 
 
 //        ArrayList<Cliente> clientes = new ArrayList<>();
@@ -52,6 +55,7 @@ public class ClienteActivity extends AppCompatActivity {
 //
 //        intent.putExtra("MESSAGE", message);
         setResult(RESULT_OK, intent);
+
 
         //encerra activity
         finish();
