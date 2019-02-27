@@ -7,7 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.student.pedido_simple_adapter_android.R;
+import br.com.student.pedido_simple_adapter_android.entidades.Cliente;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,9 +30,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openViewCliente(View view) {
+        Cliente cliente = new Cliente(1, "Glauber");
+//        ArrayList<Cliente> clientes = new ArrayList<>();
+//        clientes.add(cliente);
         Intent intent = new Intent(this, ClienteActivity.class);
-        startActivityForResult(intent, CLIENTE);
-//        startActivity(intent);
+//        intent.putParcelableArrayListExtra("clientes", clientes);
+        intent.putExtra("cliente", cliente);
+        startActivity(intent);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
