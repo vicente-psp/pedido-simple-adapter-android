@@ -39,6 +39,7 @@ public class ClienteActivity extends AppCompatActivity {
         EditText id = findViewById(R.id.txtId);
 
         String[] from = {"id"};
+        
 //        String[] from = {"id", "nome"};
         int[] to = {R.id.item_id};
 //        int[] to = {R.id.item_id, R.id.item_nome};
