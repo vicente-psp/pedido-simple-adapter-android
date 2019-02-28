@@ -24,40 +24,25 @@ public class ClienteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
-
-//        Cliente cliente = getIntent().getExtras().getParcelable("cliente");
-//        if (cliente != null) {
-//            Log.i("id", cliente.getId()+"");
-//            Log.i("cliente", cliente.getNome());
-//        } else {
-//            Toast.makeText(this, "cliente nulo ", Toast.LENGTH_LONG).show();
-//        }
     }
 
-    public void testar(View view){
-
+    public void adicionar(View view){
         txtCliente = findViewById(R.id.txtCliente);
-        Cliente cliente = new Cliente(txtCliente.getText().toString());
-        clientes.add(cliente);
+        clientes.add(new Cliente(txtCliente.getText().toString()));
+    }
+
+    public void voltar(View view){
         Intent intent = new Intent(this, MainActivity.class);
         intent.putParcelableArrayListExtra("clientes", clientes);
-//        intent.putExtra("cliente", cliente); //parei aqui
-
-
-//        ArrayList<Cliente> clientes = new ArrayList<>();
-//        clientes.add(cliente);
-//        intent.putParcelableArrayListExtra("clientes", clientes);
-
-
-
-
-//        String message = txtCliente.getText().toString();
-//
-//        intent.putExtra("MESSAGE", message);
         setResult(RESULT_OK, intent);
+        finish();
+    }
 
-
-        //encerra activity
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putParcelableArrayListExtra("clientes", clientes);
+        setResult(RESULT_OK, intent);
         finish();
     }
 }
