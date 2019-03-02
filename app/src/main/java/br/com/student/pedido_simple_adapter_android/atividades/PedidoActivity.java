@@ -31,16 +31,14 @@ public class PedidoActivity extends AppCompatActivity {
 
     public void salvar(View view) {
         EditText id = findViewById(R.id.txtId);
-//        EditText nome = findViewById(R.id.txtCliente);
+        EditText nome = findViewById(R.id.txtData);
 
-        String[] from = {"id"};
-//        String[] from = {"id", "nome"};
-        int[] to = {R.id.item_id};
-//        int[] to = {R.id.item_id, R.id.item_nome};
+        String[] from = {"id", "produto"};
+        int[] to = {R.id.pedido_item_id, R.id.pedido_item_produto};
 
         HashMap<String,String> hashMap = new HashMap<>();
         hashMap.put("id", id.getText().toString());
-//        hashMap.put("nome", nome.getText().toString());
+        hashMap.put("produto", nome.getText().toString());
         arrayList.add(hashMap);
 
         simpleListView.setAdapter(new SimpleAdapter(this, arrayList, R.layout.activity_pedido_item, from, to));

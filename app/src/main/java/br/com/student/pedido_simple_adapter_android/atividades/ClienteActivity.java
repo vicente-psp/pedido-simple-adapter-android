@@ -1,9 +1,8 @@
 package br.com.student.pedido_simple_adapter_android.atividades;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -12,45 +11,41 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
-import br.com.student.pedido_simple_adapter_android.entidades.Cliente;
 
 import br.com.student.pedido_simple_adapter_android.R;
+import br.com.student.pedido_simple_adapter_android.entidades.Cliente;
 
 public class ClienteActivity extends AppCompatActivity {
 
     ArrayList<Cliente> clientes = new ArrayList<>();
     ArrayList<HashMap<String,String>> arrayList = new ArrayList<>();
     ListView simpleListView;
+    private int ultimoId;
             
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
         simpleListView = findViewById(R.id.listViewCliente);
+        Intent intent = getIntent();
+        ultimoId = intent.getIntExtra("ultimoId", 0);
+        Toast.makeText(this, "ultimoId: " + ultimoId, Toast.LENGTH_LONG).show();
     }
 
     public void adicionar(View view){
-//        txtCliente = findViewById(R.id.txtCliente);
-        EditText txtCliente = findViewById(R.id.txtCliente);
-        clientes.add(new Cliente(txtCliente.getText().toString()));
+        EditText txtNome = findViewById(R.id.txtNome);
+        Cliente cliente = new Cliente(ultimoId + 1, txtNome.getText().toString());
+        clientes.add(cliente);
 
-        EditText id = findViewById(R.id.txtId);
-
-        String[] from = {"id"};
-
-        
-//        String[] from = {"id", "nome"};
-        int[] to = {R.id.item_id};
-//        int[] to = {R.id.item_id, R.id.item_nome};
+        String[] from = {"id", "nome"};
+        int[] to = {R.id.cliente_item_id, R.id.cliente_item_nome};
 
         HashMap<String,String> hashMap = new HashMap<>();
-        hashMap.put("id", id.getText().toString());
-//        hashMap.put("nome", nome.getText().toString());
+        hashMap.put("id", String.valueOf(cliente.getId()));
+        hashMap.put("nome", cliente.getNome());
         arrayList.add(hashMap);
 
-        simpleListView.setAdapter(new SimpleAdapter(this, arrayList, R.layout.activity_pedido_item, from, to));
+        simpleListView.setAdapter(new SimpleAdapter(this, arrayList, R.layout.activity_cliente_item, from, to));
     }
 
     public void voltar(View view){

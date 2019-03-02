@@ -8,13 +8,14 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import br.com.student.pedido_simple_adapter_android.R;
 import br.com.student.pedido_simple_adapter_android.entidades.Cliente;
 
 public class MainActivity extends AppCompatActivity {
 
+    private int clienteUltimoId = 0;
+    private int pedidoUltimoId = 0;
     private final int CLIENTE = 1;
     private final int PEDIDO = 2;
     private final int PRODUTO = 3;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openViewCliente(View view) {
         Intent intent = new Intent(this, ClienteActivity.class);
+        intent.putExtra("ultimoId", clienteUltimoId);
         startActivityForResult(intent, CLIENTE);
     }
 
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     private void preencheArrayClientes(ArrayList<Cliente> clientes) {
         for (Cliente cliente: clientes){
             this.clientes.add(cliente);
+            clienteUltimoId += cliente.getId();
         }
     }
 }
